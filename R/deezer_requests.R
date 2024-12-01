@@ -59,6 +59,8 @@ request_tracks <- function(playlist_id = "13323984883") {
 request_albums <- function(tracks) {
   album_lists <- list()
   
+  cat("Requesting Albums info, this can take a while...")
+  
   for(album in unique(tracks$album)){
     album_request <- httr::GET(paste0("https://api.deezer.com/album/", album$id))
     album_content <- httr::content(album_request)

@@ -13,11 +13,11 @@ plot_top_artists <- function(tracks, n = 10) {
   
   top_artists <- data.frame(table(artists$name)[order(table(artists$name), decreasing = T)[1:n]])
   
-  gg_top_artists <- ggplot(data = top_artists, aes(x = Var1, y = Freq)) +
-                      geom_bar(col = "black", fill = "deepskyblue4", alpha = 0.7, stat = "identity") + 
-                      theme_bw() + xlab("") + ylab("Number of songs") +
-                      ggtitle(paste0(user, "'s ", playlist_info$title, " - Top artists (", length(unique(artists$name)), " artists)")) +
-                      theme(axis.text.x = element_text(angle = 45, vjust = 0.5))
+  gg_top_artists <- ggplot2::ggplot(data = top_artists, ggplot2::aes(x = Var1, y = Freq)) +
+                      ggplot2::geom_bar(col = "black", fill = "deepskyblue4", alpha = 0.7, stat = "identity") + 
+                      ggplot2::theme_bw() + ggplot2::xlab("") + ggplot2::ylab("Number of songs") +
+                      ggplot2::ggtitle(paste0(user, "'s ", playlist_info$title, " - Top artists (", length(unique(artists$name)), " artists)")) +
+                      ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, vjust = 0.5))
   return(gg_top_artists)
 }
 
