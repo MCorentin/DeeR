@@ -4,8 +4,8 @@
 #' @param playlist_id: a string representing the playlist ID
 #' @return A parsed R object from [httr::content()]
 #' @export
-#' @examples get_playlist_info("6346527824")
-request_playlist_info <- function(playlist_id = "6346527824") {
+#' @examples get_playlist_info("13323984883")
+request_playlist_info <- function(playlist_id = "13323984883") {
   # Get some metadata directly from the "playlist" object:
   playlist_request <- httr::GET(paste0("https://api.deezer.com/playlist/", playlist_id))
   playlist_info <- httr::content(x = playlist_request, as = "parsed")
@@ -24,8 +24,8 @@ request_playlist_info <- function(playlist_id = "6346527824") {
 #' @param playlist_id: a string representing the playlist ID
 #' @return A data.frame with the tracks information
 #' @export
-#' @examples get_tracks_list("6346527824")
-request_tracks <- function(playlist_id = "6346527824") {
+#' @examples get_tracks_list("13323984883")
+request_tracks <- function(playlist_id = "13323984883") {
   tracks_request <- httr::GET(paste0("https://api.deezer.com/playlist/", playlist_id, "/tracks/"))
   tracks_content <- httr::content(x = tracks_request, as = "parsed")
   
@@ -47,4 +47,43 @@ request_tracks <- function(playlist_id = "6346527824") {
     
     return(data.frame(do.call("rbind", tracks_list)))
   }
+}
+
+#' Get the albums information:
+#' Makes requests to Deezer's API to get the albums as a data.frame
+#' Needed to get the genres, year of release and explicit lyrics information.
+#'
+#' @param tracks: a dataframe with an "artist" column, can be obtained with [DeeR::request_tracks]
+#' @return A data.frame with the albums information
+#' @export
+request_albums <- function(tracks) {
+  album_lists <- list()
+  
+  for(album in unique(tracks$album)){
+    album_request <- httr::GET(paste0("https://api.deezer.com/album/", album$id))
+    album_content <- httr::content(album_request)
+    
+    # Extract the list of genres from the album:
+    genres <- c()
+    
+    if(length(album_content$genres$data) > 0){
+      for(i in c(1:length(album_content$genres$data))){
+        genres <- c(genres, album_content$genres$data[[i]]$name)
+      }
+    } else {
+      genres <- "no genre"
+    }
+    
+    album_df <- data.frame(genre = genres,
+                           release_date =  album_content$release_date,
+                           explicit = album_content$explicit_lyrics)
+    
+    album_lists <- append(album_lists, list(album_df))
+    
+    # Test with sleep to respect the API quotas (50 requests / second)
+    # Todo: find a better way to implement this:
+    Sys.sleep(0.2)
+  }
+  
+  return(data.frame(do.call("rbind", album_lists)))
 }
