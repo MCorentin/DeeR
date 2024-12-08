@@ -18,14 +18,16 @@ DeeR needs the following:
  - **R** (tested on version v4.3.3)
  - **An internet connection**
  - **The following R libraries:** (in parenthesis are the versions tested during development)
-    - treemap (v2.4-4)
-    - ggplot2 (v2_3.5.1)
-    - httr    (v1.4.7)
+    - treemap   (v2.4-4)
+    - ggplot2   (v2_3.5.1)
+    - httr      (v1.4.7)
+    - wordcloud (v2.6)
 
 ### Install DeeR with devtools
 
 The easiest way to get DeeR is to install it directly from R using the package “devtools”:
-````
+
+````R
 install.packages("devtools")
 library("devtools")
 install_github(repo = "MCorentin/DeeR", dependencies = TRUE)
@@ -35,12 +37,12 @@ library("DeeR")
 ### Install DeeR from source
 
 Alternatively you can clone the GitHub repository:
-````
+````shell
 git clone https://github.com/MCorentin/DeeR
 ````
 
 Then open R and install the package script from source:
-````
+````R
 library("utils")
 install.packages("./DeeR/", repos = NULL, type = "source")
 ````
@@ -53,7 +55,10 @@ eg: "13323984883" for [https://www.deezer.com/fr/playlist/13323984883](https://w
 
 Then you can use DeeR functions:
 
-```
+```R
+if(!require("devtools")) install.packages("devtools")
+if(!require("DeeR")) devtools::install_github(repo = "MCorentin/DeeR", dependencies = TRUE)
+
 playlist_id <- "13323984883"
 
 playlist_info <- request_playlist_info(playlist_id)
@@ -66,7 +71,7 @@ tracks <- request_tracks(playlist_id)
 
 To plot the top artists:
 
-```
+```R
 plot_top_artists(tracks)
 ```
 
@@ -74,9 +79,16 @@ plot_top_artists(tracks)
 
 The genres per album of the playlist:
 
-```
+```R
 albums <- request_albums(tracks)
 plot_genres_treemap(albums)
 ```
 
 ![Genres](./images/genres_treemap.png?raw=true)
+
+Word cloud of the most present words in the playlist titles:
+
+```R
+plot_titles_wordcloud(tracks)
+```
+

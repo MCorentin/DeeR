@@ -72,19 +72,20 @@ request_albums <- function(tracks) {
       for(i in c(1:length(album_content$genres$data))){
         genres <- c(genres, album_content$genres$data[[i]]$name)
       }
-    } else {
-      genres <- "no genre"
-    }
+    } else { genres <- "no genre" }
+    
+    if(length(album_content$release_date) == 0) { album_content$release_date <- "0000-00-00" }
+    if(length(album_content$explicit_lyrics) == 0) { album_content$explicit_lyrics <- "Unknown" }
     
     album_df <- data.frame(genre = genres,
-                           release_date =  album_content$release_date,
+                           release_date = album_content$release_date,
                            explicit = album_content$explicit_lyrics)
     
     album_lists <- append(album_lists, list(album_df))
     
     # Test with sleep to respect the API quotas (50 requests / second)
     # Todo: find a better way to implement this:
-    Sys.sleep(0.2)
+    Sys.sleep(0.021)
   }
   
   return(data.frame(do.call("rbind", album_lists)))
