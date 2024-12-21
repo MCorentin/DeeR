@@ -13,7 +13,7 @@ plot_top_artists <- function(tracks, n = 10) {
   
   top_artists <- data.frame(table(artists$name)[order(table(artists$name), decreasing = T)[1:n]])
   
-  gg_top_artists <- ggplot2::ggplot(data = top_artists, ggplot2::aes(x = Var1, y = Freq)) +
+  gg_top_artists <- ggplot2::ggplot(data = top_artists, ggplot2::aes_string(x = "Var1", y = "Freq")) +
                       ggplot2::geom_bar(col = "black", fill = "deepskyblue4", alpha = 0.7, stat = "identity") + 
                       ggplot2::theme_bw() + ggplot2::xlab("") + ggplot2::ylab("Number of songs") +
                       ggplot2::ggtitle(paste0(user, "'s ", playlist_info$title, " - Top artists (", length(unique(artists$name)), " artists)")) +
@@ -55,7 +55,7 @@ plot_timeline <- function(albums) {
   
   time_df <- as.data.frame(table(release_years))
   
-  gg_time <- ggplot2::ggplot(data = time_df, ggplot2::aes(x = release_years, y = Freq)) +
+  gg_time <- ggplot2::ggplot(data = time_df, ggplot2::aes_string(x = "release_years", y = "Freq")) +
     ggplot2::geom_bar(col = "black", fill = "deepskyblue4", alpha = 0.7, stat = "identity") + 
     ggplot2::theme_bw() + ggplot2::ylab("Number of albums") +
     ggplot2::ggtitle(paste0("Release Year (", nrow(time_df), " incredible albums)")) + 

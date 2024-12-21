@@ -4,7 +4,7 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Corentin", "Molitor", , "c.molitor@cranfield.ac.uk", role = c("aut", "cre"))
 Description: An R package to explore Deezer playlists (songs, artists, genres) using the website API.
-License: `use_gpl3_license()`
+License: GPL (>= 3)
 Encoding: UTF-8
 URL: https://github.com/MCorentin/DeeR
 BugReports: https://github.com/MCorentin/DeeR/issues
