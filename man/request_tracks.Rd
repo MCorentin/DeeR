@@ -5,10 +5,10 @@
 \title{Get playlist tracks:
 Makes a request to Deezer's API to get the tracks as a parsed R object.}
 \usage{
-request_tracks(playlist_id = "6346527824")
+request_tracks(playlist_id = "13323984883")
 }
 \arguments{
-\item{playlist_id:}{a string representing the playlist ID}
+\item{playlist_id}{a string representing the playlist ID}
 }
 \value{
 A data.frame with the tracks information
@@ -18,5 +18,5 @@ Get playlist tracks:
 Makes a request to Deezer's API to get the tracks as a parsed R object.
 }
 \examples{
-get_tracks_list("6346527824")
+request_tracks("13323984883")
 }

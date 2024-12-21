@@ -92,3 +92,5 @@ Word cloud of the most present words in the playlist titles:
 plot_titles_wordcloud(tracks)
 ```
 
+![Wordcloud](./images/wordcloud.png)
+

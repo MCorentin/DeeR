@@ -1,10 +1,10 @@
 #' Get playlist information:
 #' Makes a request to Deezer's API to get the tracks as a parsed R object.
 #'
-#' @param playlist_id: a string representing the playlist ID
+#' @param playlist_id a string representing the playlist ID
 #' @return A parsed R object from [httr::content()]
 #' @export
-#' @examples get_playlist_info("13323984883")
+#' @examples request_playlist_info("13323984883")
 request_playlist_info <- function(playlist_id = "13323984883") {
   # Get some metadata directly from the "playlist" object:
   playlist_request <- httr::GET(paste0("https://api.deezer.com/playlist/", playlist_id))
@@ -21,10 +21,10 @@ request_playlist_info <- function(playlist_id = "13323984883") {
 #' Get playlist tracks:
 #' Makes a request to Deezer's API to get the tracks as a parsed R object.
 #'
-#' @param playlist_id: a string representing the playlist ID
+#' @param playlist_id a string representing the playlist ID
 #' @return A data.frame with the tracks information
 #' @export
-#' @examples get_tracks_list("13323984883")
+#' @examples request_tracks("13323984883")
 request_tracks <- function(playlist_id = "13323984883") {
   tracks_request <- httr::GET(paste0("https://api.deezer.com/playlist/", playlist_id, "/tracks/"))
   tracks_content <- httr::content(x = tracks_request, as = "parsed")
@@ -53,7 +53,7 @@ request_tracks <- function(playlist_id = "13323984883") {
 #' Makes requests to Deezer's API to get the albums as a data.frame
 #' Needed to get the genres, year of release and explicit lyrics information.
 #'
-#' @param tracks: a dataframe with an "artist" column, can be obtained with [DeeR::request_tracks]
+#' @param tracks a dataframe with an "artist" column, can be obtained with [DeeR::request_tracks]
 #' @return A data.frame with the albums information
 #' @export
 request_albums <- function(tracks) {

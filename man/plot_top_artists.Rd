@@ -7,9 +7,9 @@
 plot_top_artists(tracks, n = 10)
 }
 \arguments{
-\item{tracks:}{a dataframe with an "artist" column, can be obtained with \link{request_tracks}}
+\item{tracks}{a dataframe with an "artist" column, can be obtained with \link{request_tracks}}
 
-\item{n:}{the number of artists to plot, default: 10}
+\item{n}{the number of artists to plot, default: 10}
 }
 \value{
 A ggplot barplot with the top artists by number of songs

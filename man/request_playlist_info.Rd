@@ -5,10 +5,10 @@
 \title{Get playlist information:
 Makes a request to Deezer's API to get the tracks as a parsed R object.}
 \usage{
-request_playlist_info(playlist_id = "6346527824")
+request_playlist_info(playlist_id = "13323984883")
 }
 \arguments{
-\item{playlist_id:}{a string representing the playlist ID}
+\item{playlist_id}{a string representing the playlist ID}
 }
 \value{
 A parsed R object from \code{\link[httr:content]{httr::content()}}
@@ -18,5 +18,5 @@ Get playlist information:
 Makes a request to Deezer's API to get the tracks as a parsed R object.
 }
 \examples{
-get_playlist_info("6346527824")
+request_playlist_info("13323984883")
 }

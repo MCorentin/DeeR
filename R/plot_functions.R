@@ -1,7 +1,7 @@
 #' Will plot the top n artists (in number of songs in the playlist).
 #'
-#' @param tracks: a dataframe with an "artist" column, can be obtained with [DeeR::request_tracks]
-#' @param n: the number of artists to plot, default: 10
+#' @param tracks a dataframe with an "artist" column, can be obtained with [DeeR::request_tracks]
+#' @param n the number of artists to plot, default: 10
 #' @return A ggplot barplot with the top artists by number of songs
 #' @export
 plot_top_artists <- function(tracks, n = 10) {
@@ -24,7 +24,7 @@ plot_top_artists <- function(tracks, n = 10) {
 
 #' Will plot the genres present in the playlist as a treemap.
 #'
-#' @param albums: a data.frame obtained with [DeeR::request_albums]
+#' @param albums a data.frame obtained with [DeeR::request_albums]
 #' @return A treemap of the genres present in the playlist
 #' @export
 plot_genres_treemap <- function(albums) {
@@ -46,7 +46,7 @@ plot_genres_treemap <- function(albums) {
 
 #' Will plot the release dates of the albums present in the playlist.
 #'
-#' @param albums: a data.frame obtained with [DeeR::request_albums]
+#' @param albums a data.frame obtained with [DeeR::request_albums]
 #' @return A plot of the release dates
 #' @export
 plot_timeline <- function(albums) {
@@ -64,7 +64,8 @@ plot_timeline <- function(albums) {
 
 #' Will plot a wordcloud of the words present in the tracks title
 #'
-#' @param albums: a data.frame obtained with [DeeR::request_tracks]
+#' @param tracks a data.frame obtained with [DeeR::request_tracks]
+#' @param n the maximum number of words to plot
 #' @return A wordcloud of top n most frequent words
 #' @export
 plot_titles_wordcloud <- function(tracks, n = 50) {
@@ -84,10 +85,16 @@ plot_titles_wordcloud <- function(tracks, n = 50) {
                       replacement = "", x = title_words, ignore.case = TRUE)
 
   
-  wordcloud(words = title_words, max.words = n, min.freq = 1,  
-            rot.per = 0, colors = brewer.pal(8, "Paired"), random.order = FALSE)
+  wordcloud::wordcloud(words = title_words, 
+                       max.words = n, 
+                       min.freq = 1,  
+                       rot.per = 0, 
+                       colors = brewer.pal(8, "Paired"), 
+                       random.order = FALSE)
 }
 
 # fans
 
 # bpm
+
+# Albums mosaic
