@@ -61,6 +61,8 @@ plot_timeline <- function(albums) {
     ggplot2::theme_bw() + ggplot2::ylab("Number of albums") +
     ggplot2::ggtitle(paste0("Release Year (", nrow(time_df), " incredible albums)")) + 
     ggplot2::scale_x_discrete(name = "Release year", breaks = timespan, drop = FALSE)
+  
+  return(gg_time)
 }
 
 #' Will plot a wordcloud of the words present in the tracks title
@@ -86,12 +88,14 @@ plot_titles_wordcloud <- function(tracks, n = 50) {
                       replacement = "", x = title_words, ignore.case = TRUE)
 
   
-  wordcloud::wordcloud(words = title_words, 
-                       max.words = n, 
-                       min.freq = 1,  
-                       rot.per = 0, 
-                       colors = RColorBrewer::brewer.pal(8, "Paired"), 
-                       random.order = FALSE)
+  wc <- wordcloud::wordcloud(words = title_words, 
+                             max.words = n, 
+                             min.freq = 1,  
+                             rot.per = 0, 
+                             colors = RColorBrewer::brewer.pal(8, "Paired"), 
+                             random.order = FALSE)
+  
+  return(wc)
 }
 
 # fans
