@@ -16,7 +16,7 @@ plot_top_artists <- function(tracks, n = 10) {
   gg_top_artists <- ggplot2::ggplot(data = top_artists, ggplot2::aes_string(x = "Var1", y = "Freq")) +
                       ggplot2::geom_bar(col = "black", fill = "deepskyblue4", alpha = 0.7, stat = "identity") + 
                       ggplot2::theme_bw() + ggplot2::xlab("") + ggplot2::ylab("Number of songs") +
-                      ggplot2::ggtitle(paste0(user, "'s ", playlist_info$title, " - Top artists (", length(unique(artists$name)), " artists)")) +
+                      ggplot2::ggtitle(paste0("Top artists (", length(unique(artists$name)), " artists)")) +
                       ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 90, vjust = 0.5))
   return(gg_top_artists)
 }
@@ -43,6 +43,7 @@ plot_genres_treemap <- function(albums) {
                         title = "Genres - Treemap")
   return(t)
 }
+
 
 #' Will plot the release dates of the albums present in the playlist.
 #'
@@ -89,7 +90,7 @@ plot_titles_wordcloud <- function(tracks, n = 50) {
                        max.words = n, 
                        min.freq = 1,  
                        rot.per = 0, 
-                       colors = brewer.pal(8, "Paired"), 
+                       colors = RColorBrewer::brewer.pal(8, "Paired"), 
                        random.order = FALSE)
 }
 
