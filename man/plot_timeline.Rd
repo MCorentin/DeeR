@@ -7,7 +7,7 @@
 plot_timeline(albums)
 }
 \arguments{
-\item{albums}{a data.frame obtained with \link{request_albums}}
+\item{albums}{A data.frame obtained with \link{request_albums}}
 }
 \value{
 A plot of the release dates

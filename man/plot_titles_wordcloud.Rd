@@ -7,9 +7,9 @@
 plot_titles_wordcloud(tracks, n = 50)
 }
 \arguments{
-\item{tracks}{a data.frame obtained with \link{request_tracks}}
+\item{tracks}{A data.frame obtained with \link{request_tracks}}
 
-\item{n}{the maximum number of words to plot}
+\item{n}{The maximum number of words to plot}
 }
 \value{
 A wordcloud of top n most frequent words

@@ -9,7 +9,8 @@ Needed to get the genres, year of release and explicit lyrics information.}
 request_albums(tracks)
 }
 \arguments{
-\item{tracks}{a dataframe with an "artist" column, can be obtained with \link{request_tracks}}
+\item{tracks}{a dataframe with an "artist" column, can be obtained with
+\link{request_tracks}}
 }
 \value{
 A data.frame with the albums information
