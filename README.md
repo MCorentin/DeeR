@@ -78,7 +78,7 @@ The top artists of the playlist:
 plot_top_artists(tracks)
 ```
 
-![Top Artists](./images/top_artists_plot.png|width=10)
+![Top Artists](./images/top_artists_plot.png)
 
 The genres per album of the playlist:
 
@@ -86,7 +86,7 @@ The genres per album of the playlist:
 plot_genres_treemap(albums)
 ```
 
-![Genres](./images/genres_treemap.png|width=10)
+![Genres](./images/genres_treemap.png)
 
 Plotting a Bubble chart of the most popular albums per year:
 
@@ -94,7 +94,7 @@ Plotting a Bubble chart of the most popular albums per year:
 plot_bubble_fans(albums)
 ```
 
-![Bubble](./images/genres_bubble.png|width=10)
+![Bubble](./images/genres_bubble.png)
 
 Word cloud of the most present words in the playlist titles:
 
@@ -102,6 +102,6 @@ Word cloud of the most present words in the playlist titles:
 plot_titles_wordcloud(tracks)
 ```
 
-![Wordcloud](./images/wordcloud.png|width=10)
+![Wordcloud](./images/wordcloud.png)
 
 
